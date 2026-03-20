@@ -7,7 +7,7 @@
   <p align="center">
     <a href="https://astro.build/"><img src="https://img.shields.io/badge/Astro-FF5D01?style=for-the-badge&logo=astro&logoColor=white" alt="Astro"></a>
     <a href="https://bun.sh/"><img src="https://img.shields.io/badge/Bun-000000?style=for-the-badge&logo=bun&logoColor=white" alt="Bun"></a>
-    <a href="https://github.com/Keyser2356/bio/stargazers"><img src="https://img.shields.io/github/stars/Keyser2356/bio?style=for-the-badge&color=yellow" alt="Stars"></a>
+    <a href="https://github.com/Keyser2356/keyser-bio/stargazers"><img src="https://img.shields.io/github/stars/Keyser2356/keyser-bio?style=for-the-badge&color=yellow" alt="Stars"></a>
   </p>
 </p>
 
