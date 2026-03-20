@@ -1,0 +1,59 @@
+---
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+---
+
+<Base title="404 — keyser." description="404 — page not found">
+  <style>
+    [data-bg-ready]::before { opacity: 0.45 !important; }
+  </style>
+
+  <div
+    data-bg-ready
+    style="--bg-link: url(/images/gif/bg.gif)"
+    class="border-l border-r border-l-background-100 border-r-background-100 flex flex-col min-h-screen [image-rendering:pixelated] md:max-w-[750px] before:content-[''] before:left-0 before:top-0 before:fixed before:z-[-1] before:bg-fixed before:bg-center before:bg-no-repeat before:bg-[image:var(--bg-link)] before:opacity-45 before:h-full before:w-full mx-auto bg-background before:bg-[length:cover]"
+  >
+    <Header />
+
+    <div class="*:border-b-1 *:border-b-background-100">
+      <div class="p-5">
+        <div class="mb-2">
+          <h1 class="text-xl font-bold">
+            <span class="text-foreground-700">#</span> 404 — not found
+          </h1>
+          <p class="text-xs text-foreground-700">
+            <span class="text-foreground-900 mr-0.5">##</span>
+            the page you are looking for does not exist
+          </p>
+        </div>
+
+        <ul class="pl-0 md:pl-6 mt-2">
+          <li class="text-xs flex gap-2 items-center md:text-base">
+            <span class="text-foreground-700">-</span>
+            <p>error:</p>
+            <p class="text-foreground-700">HTTP 404</p>
+          </li>
+          <li class="text-xs flex gap-2 items-center md:text-base">
+            <span class="text-foreground-700">-</span>
+            <p>path:</p>
+            <p class="text-foreground-700"><span id="not-found-path">unknown</span></p>
+          </li>
+          <li class="text-xs flex gap-2 items-center md:text-base">
+            <span class="text-foreground-700">-</span>
+            <p>suggestion:</p>
+            <p>
+              <a href="/" class="text-foreground-700 hover:text-foreground transition-colors duration-200">
+                go back home →
+              </a>
+            </p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <script is:inline>
+    const el = document.getElementById('not-found-path');
+    if (el) el.textContent = window.location.pathname;
+  </script>
+</Base>

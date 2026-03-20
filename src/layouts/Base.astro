@@ -1,0 +1,91 @@
+---
+export interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = '★ keyser.',
+  description = "keyser's personal website",
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en" class="overscroll-none overflow-y-scroll">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#000000">
+  <meta name="description" content={description}>
+  <meta name="keywords" content="keyser, jsop, жсоп, жсопн">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content={title}>
+  <meta property="og:description" content={description}>
+  <meta property="og:author" content="keyser">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:image" content="/images/avatar.png">
+  <meta property="og:image:type" content="image/png">
+  <title>{title}</title>
+
+  <link rel="icon" href="/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+
+  
+  <style>
+    @font-face {
+      font-family: 'Fira Code';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url(https://fonts.gstatic.com/s/firacode/v27/uU9eCBsR6Z2vfE9aq3bL0fxyUs4tcw4W_D1sFVc.ttf) format('truetype');
+    }
+    @font-face {
+      font-family: 'Fira Code';
+      font-style: normal;
+      font-weight: 500;
+      font-display: swap;
+      src: url(https://fonts.gstatic.com/s/firacode/v27/uU9eCBsR6Z2vfE9aq3bL0fxyUs4tcw4W_A9sFVc.ttf) format('truetype');
+    }
+    @font-face {
+      font-family: 'Fira Code';
+      font-style: normal;
+      font-weight: 600;
+      font-display: swap;
+      src: url(https://fonts.gstatic.com/s/firacode/v27/uU9eCBsR6Z2vfE9aq3bL0fxyUs4tcw4W_ONrFVc.ttf) format('truetype');
+    }
+    @font-face {
+      font-family: 'Fira Code';
+      font-style: normal;
+      font-weight: 700;
+      font-display: swap;
+      src: url(https://fonts.gstatic.com/s/firacode/v27/uU9eCBsR6Z2vfE9aq3bL0fxyUs4tcw4W_NprFVc.ttf) format('truetype');
+    }
+  </style>
+
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/scrobbles.css">
+</head>
+
+<body class="text-foreground bg-background">
+  <slot />
+
+  
+  <script is:inline define:vars={{ discordUserId: import.meta.env.PUBLIC_DISCORD_USER_ID || '640170306429911060' }}>
+    window.__config = { discordUserId };
+    function getConfig() { return Promise.resolve(window.__config); }
+  </script>
+  
+  <script is:inline src="/js/codeProtection.js"></script>
+  <script is:inline src="/js/discord-status.js"></script>
+  <script is:inline src="/js/scrobbles.js"></script>
+  <script is:inline src="/js/scrobbles-hover.js"></script>
+  <script is:inline src="/js/favorite-tracks.js"></script>
+  <script is:inline src="/js/game-history.js"></script>
+  <script is:inline src="/js/alive.js"></script>
+  <script is:inline src="/js/pageAnimations.js"></script>
+  <script is:inline src="/js/scroll.js"></script>
+  <script is:inline src="/js/links-hover.js"></script>
+</body>
+</html>

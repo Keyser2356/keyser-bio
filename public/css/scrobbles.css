@@ -1,0 +1,181 @@
+#spotify-scroll-container {
+  width: 100%;
+  overflow: hidden;
+  cursor: grab;
+  padding: 5px 0 15px 0;
+  touch-action: pan-y;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+#spotify-scroll-container:active {
+  cursor: grabbing;
+}
+
+#spotify-scroll-container::-webkit-scrollbar {
+  display: none;
+}
+
+.spotify-track-row {
+  display: flex;
+  gap: 12px;
+  padding: 5px 0;
+  will-change: transform;
+  width: max-content;
+}
+
+.spotify-card {
+  display: flex;
+  align-items: center;
+  height: 56px;
+  padding: 0 12px;
+  background-color: #101010;
+  border: 1px solid #1a1a1a;
+  border-radius: 12px;
+  position: relative;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  opacity: 1;
+  
+  animation: slideInAndFadeIn 0.1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), 
+              opacity 0.25s ease, 
+              border-color 0.25s ease,
+              background-color 0.25s ease;
+}
+
+
+.spotify-card.is-playing {
+  border-color: var(--colors-accent-DEFAULT) !important;
+  animation: popIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.spotify-card .icon-box {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  margin-right: 12px;
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+
+.spotify-card .icon-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  -webkit-user-drag: none;
+  user-select: none;
+}
+
+.spotify-card .gif-overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  display: none;
+  opacity: 0.8;
+  background: rgba(0,0,0,0.2);
+}
+
+.spotify-card.is-playing .art {
+  opacity: 0.4;
+}
+
+.spotify-card.is-playing .gif-overlay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.spotify-card .text-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+  white-space: nowrap;
+}
+
+.spotify-card .track-title, 
+.spotify-card .song-name {
+  color: #eee;
+  font-size: 12px;
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.spotify-card .track-artist, 
+.spotify-card .artist-name {
+  color: #888;
+  font-size: 11px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+#spotify-measurer {
+  position: absolute;
+  visibility: hidden;
+  white-space: nowrap;
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+
+.spotify-card.skeleton {
+  background: linear-gradient(
+    90deg,
+    #161616 0%,
+    #1f1f1f 50%,
+    #161616 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2.5s infinite;
+  border-color: #1a1a1a;
+  cursor: default;
+}
+
+.spotify-card.skeleton .icon-box,
+.spotify-card.skeleton .text-info {
+  pointer-events: none;
+}
+
+#spotify-scroll-hint {
+  margin-top: 9px;
+  text-align: center;
+  font-size: 9px;
+  color: #707070;
+}
+
+@keyframes slideInAndFadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}

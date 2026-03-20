@@ -1,0 +1,43 @@
+---
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Metadata from '../components/Metadata.astro';
+import Hobbies from '../components/Hobbies.astro';
+import Scrobbles from '../components/Scrobbles.astro';
+import FavoriteTracks from '../components/FavoriteTracks.astro';
+import GameHistory from '../components/GameHistory.astro';
+import SocialLinks from '../components/SocialLinks.astro';
+---
+
+<Base>
+  <div
+    style="--bg-link: url(/images/gif/bg.gif)"
+    class="border-l border-r border-l-background-100 border-r-background-100 flex flex-col min-h-screen [image-rendering:pixelated] md:max-w-[750px] before:content-[''] before:left-0 before:top-0 before:fixed before:z-[-1] before:bg-fixed before:bg-center before:bg-no-repeat before:bg-[image:var(--bg-link)] before:opacity-45 before:h-full before:w-full mx-auto bg-background before:bg-[length:cover]"
+  >
+    <Header />
+
+    <noscript>
+      <div class="border-b border-background-100 w-full bg-striped-accent">
+        <div class="text-xs text-accent p-2 text-center rounded">
+          [ some features require javascript to be enabled, please turn it on for the best experience! ]
+        </div>
+      </div>
+    </noscript>
+
+    <div class="*:border-b-1 *:border-b-background-100">
+      <Metadata />
+      <Hobbies />
+      <Scrobbles />
+      <FavoriteTracks />
+      <GameHistory />
+      <SocialLinks />
+    </div>
+  </div>
+
+  <script is:inline type="module">
+    document.addEventListener("DOMContentLoaded", () => {
+      const el = document.querySelector("li.hidden");
+      if (el) el.classList.remove("hidden");
+    });
+  </script>
+</Base>

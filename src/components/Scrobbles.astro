@@ -1,0 +1,44 @@
+---
+const USER_ID = import.meta.env.PUBLIC_DISCORD_USER_ID || '640170306429911060';
+
+let currentTrack = null;
+
+try {
+  const res = await fetch(`https://api.lanyard.rest/v1/users/${USER_ID}`);
+  const { data } = await res.json();
+  if (data?.listening_to_spotify && data?.spotify) {
+    currentTrack = data.spotify;
+  }
+} catch {}
+---
+
+<div class="p-5">
+  <div class="mb-2">
+    <h1 class="text-xl font-bold">
+      <span class="text-foreground-700">#</span> scrobbles history
+    </h1>
+    <p class="text-xs text-foreground-700">
+      <span class="text-foreground-900 mr-0.5">##</span>
+      fetched from my spotify profile, almost in real-time! wow much music
+    </p>
+  </div>
+
+  <div id="spotify-scroll-container">
+    <div class="spotify-track-row" id="spotify-track-row">
+      {currentTrack && (
+        <div class="spotify-card is-playing" style="width:220px">
+          <div class="icon-box">
+            <img src={currentTrack.album_art_url} class="art" alt={currentTrack.song}>
+            <img class="gif-overlay" src="/play_animation.gif" alt="">
+          </div>
+          <div class="text-info">
+            <div class="track-title">{currentTrack.song}</div>
+            <div class="track-artist">{currentTrack.artist}</div>
+          </div>
+        </div>
+      )}
+    </div>
+  </div>
+  <div id="spotify-measurer"></div>
+  <div id="spotify-scroll-hint">← [ scroll to navigate ] →</div>
+</div>

@@ -1,0 +1,15 @@
+{
+  "name": "bio",
+  "type": "module",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "astro dev --port 3000",
+    "build": "astro build",
+    "preview": "astro preview --port 3000",
+    "start": "bun run build && bun run preview"
+  },
+  "dependencies": {
+    "astro": "^4.0.0",
+    "@astrojs/node": "^8.0.0"
+  }
+}

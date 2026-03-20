@@ -1,0 +1,54 @@
+---
+---
+
+<header class="p-8 border-b border-b-background-100 flex items-center justify-between">
+  <a href="/">
+    <h1 class="text-3xl font-bold md:text-4xl">
+      <span class="text-foreground-700">#</span> keyser
+    </h1>
+    <p class="text-xs text-foreground-700 font-bold md:text-xl">
+      <span class="text-foreground-900 mr-1">##</span> sleep deprived developer
+    </p>
+  </a>
+
+  <a href="/">
+    <img
+      id="rusk"
+      src="/images/avatar.png"
+      alt="cute rusk gif by siromu466, pls buy their cursor set :3"
+      class="h-12 w-12 [image-rendering:pixelated] md:h-24 md:w-24 rounded-lg"
+    >
+  </a>
+</header>
+
+<script is:inline type="module">
+  (() => {
+    if (new URLSearchParams(window.location.search).has("glunging")) {
+      const el = document.getElementById("rusk");
+      if (!el) return;
+      const originalSrc = el.getAttribute("src");
+      if (!originalSrc) return;
+      const parent = el.parentElement;
+      el.setAttribute("src", "/images/glungus.jpg");
+      el.classList.add("animate-bounce");
+      if (parent) {
+        parent.setAttribute("href", "https://glungus.cat/");
+        parent.setAttribute("target", "_blank");
+      }
+      console.log("meow ".repeat(500).trimEnd());
+      setTimeout(() => {
+        el.setAttribute("src", originalSrc);
+        el.classList.remove("animate-bounce");
+        if (parent) {
+          parent.setAttribute("href", "/");
+          parent.removeAttribute("target");
+        }
+        const url = new URL(window.location.href);
+        url.searchParams.delete("glunging");
+        window.history.replaceState({}, "", url);
+        console.clear();
+        console.log("muehehehe");
+      }, 5000);
+    }
+  })();
+</script>
