@@ -37,8 +37,8 @@
 ### 🚀 Quick Start
 
 ```bash
-git clone https://github.com/Keyser2356/bio.git
-cd bio
+git clone https://github.com/Keyser2356/keyser-bio.git
+cd keyser-bio
 bun install
 bun run dev
 ```
